@@ -15,7 +15,7 @@ public class StudentList {
 		if(args[0].equals(Constant.print)) {
 			System.out.println(Constant.load);
 			try {
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(Constant.studentsList)));
+			BufferedReader bufferedReader = readFile();
 			String line = bufferedReader.readLine();
 			String studentName[] = line.split(Constant.comma);
 			for(String student : studentName) {
@@ -27,7 +27,7 @@ public class StudentList {
 		else if(args[0].equals(Constant.random)) {
 			System.out.println(Constant.load);
 			try {
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(Constant.studentsList)));
+			BufferedReader bufferedReader = readFile();
 			String line = bufferedReader.readLine();
 			String studentName[] = line.split(Constant.comma);
 			Random random = new Random();
@@ -39,7 +39,7 @@ public class StudentList {
 		else if(args[0].contains(Constant.add)){
 			System.out.println(Constant.load);
 			try {
-			BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(Constant.studentsList, true));
+			BufferedWriter bufferedWriter = writeFile();
 			String inputData = args[0].substring(1);
 	        Date date = new Date();
 	        String format = Constant.dd;
@@ -53,7 +53,7 @@ public class StudentList {
 		else if(args[0].contains(Constant.search)) {
 			System.out.println(Constant.load);
 			try {
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(Constant.studentsList)));
+			BufferedReader bufferedReader = readFile();
 			String line = bufferedReader.readLine();
 			String studentName[] = line.split(Constant.comma);
 			boolean done = false;
@@ -70,7 +70,7 @@ public class StudentList {
 		else if(args[0].contains(Constant.count)) {
 			System.out.println(Constant.load);
 			try {
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(Constant.studentsList)));
+			BufferedReader bufferedReader = readFile();
 			String line = bufferedReader.readLine();
 			char charArray[] = line.toCharArray();
 			boolean in_word = false;
@@ -91,4 +91,14 @@ public class StudentList {
 		}
 
 	}
+
+	private static BufferedReader readFile() throws FileNotFoundException{
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(Constant.studentsList)));
+		return bufferedReader;
+	}
+	private static BufferedWriter writeFile() throws IOException {
+		BufferedWriter bufferedReader = new BufferedWriter(new FileWriter(Constant.studentsList, true));
+		return bufferedReader;
+	}
+
 }
