@@ -56,12 +56,12 @@ public class StudentList {
 			//BufferedReader bufferedReader = readFile();
 			//String line = readFile().readLine();
 			String studentName[] = readFile().readLine().split(Constant.comma);
-			boolean done = false;
+			
 			//String inputData = args[0].substring(1);
-			for(int index = 0; index<studentName.length && !done; index++) {
+			for(int index = 0; index<studentName.length; index++) {
 				if(studentName[index].equals(args[0].substring(1))) {
 					System.out.println(Constant.found);
-					done=true;
+					break;
 				}
 			}
 			} catch (Exception e){}
