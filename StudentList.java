@@ -70,17 +70,7 @@ public class StudentList {
 		else if(args[0].contains(Constant.count)) {
 			System.out.println(Constant.load);
 			try {
-			//BufferedReader bufferedReader = readFile();
-			//String line = readFile().readLine();
-			//char charArray[] = readFile().readLine().toCharArray();
-			boolean in_word = false;
-			int count=0;
-			for(char character: readFile().readLine().toCharArray()) {
-				if(character ==' ') {
-					count++;
-				}
-			}
-			System.out.println(count+1 +Constant.word );
+			System.out.println(readFile().readLine().split(Constant.comma).length + Constant.word);
 			} catch (Exception e){}
 			System.out.println(Constant.loaded);
 		}
