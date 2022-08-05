@@ -15,10 +15,10 @@ public class StudentList {
 		if(args[0].equals(Constant.print)) {
 			System.out.println(Constant.load);
 			try {
-			BufferedReader bufferedReader = readFile();
-			String line = bufferedReader.readLine();
-			String studentName[] = line.split(Constant.comma);
-			for(String student : studentName) {
+			//BufferedReader bufferedReader = readFile();
+			//String line = readFile().readLine();
+			//String studentName[] = readFile().readLine().split(Constant.comma);
+			for(String student : readFile().readLine().split(Constant.comma)) {
 				System.out.println(student);
 			}
 			} catch (Exception e){}
@@ -27,11 +27,11 @@ public class StudentList {
 		else if(args[0].equals(Constant.random)) {
 			System.out.println(Constant.load);
 			try {
-			BufferedReader bufferedReader = readFile();
-			String line = bufferedReader.readLine();
-			String studentName[] = line.split(Constant.comma);
-			Random random = new Random();
-			int randomStudentName = random.nextInt(studentName.length);
+			//BufferedReader bufferedReader = readFile();
+			//String line = readFile().readLine();
+			String studentName[] = readFile().readLine().split(Constant.comma);
+			//Random random = new Random();
+			int randomStudentName = new Random().nextInt(studentName.length);
 			System.out.println(studentName[randomStudentName]);
 			} catch (Exception e){}
 			System.out.println(Constant.loaded);
@@ -41,10 +41,10 @@ public class StudentList {
 			try {
 			BufferedWriter bufferedWriter = writeFile();
 			String inputData = args[0].substring(1);
-	        Date date = new Date();
-	        String format = Constant.dd;
-	        DateFormat dateFormat = new SimpleDateFormat(format);
-	        String formatDate= dateFormat.format(date);
+	        //Date date = new Date();
+	        //String format = Constant.dd;
+	        //DateFormat dateFormat = new SimpleDateFormat(Constant.dd);
+	        String formatDate = new SimpleDateFormat(Constant.dd).format(new Date());
 			bufferedWriter.write(Constant.comma +inputData+ Constant.lastUpdate +formatDate);
 			bufferedWriter.close();
 			} catch (Exception e){}
@@ -53,13 +53,13 @@ public class StudentList {
 		else if(args[0].contains(Constant.search)) {
 			System.out.println(Constant.load);
 			try {
-			BufferedReader bufferedReader = readFile();
-			String line = bufferedReader.readLine();
-			String studentName[] = line.split(Constant.comma);
+			//BufferedReader bufferedReader = readFile();
+			//String line = readFile().readLine();
+			String studentName[] = readFile().readLine().split(Constant.comma);
 			boolean done = false;
-			String inputData = args[0].substring(1);
+			//String inputData = args[0].substring(1);
 			for(int index = 0; index<studentName.length && !done; index++) {
-				if(studentName[index].equals(inputData)) {
+				if(studentName[index].equals(args[0].substring(1))) {
 					System.out.println(Constant.found);
 					done=true;
 				}
@@ -70,17 +70,17 @@ public class StudentList {
 		else if(args[0].contains(Constant.count)) {
 			System.out.println(Constant.load);
 			try {
-			BufferedReader bufferedReader = readFile();
-			String line = bufferedReader.readLine();
-			char charArray[] = line.toCharArray();
+			//BufferedReader bufferedReader = readFile();
+			//String line = readFile().readLine();
+			//char charArray[] = readFile().readLine().toCharArray();
 			boolean in_word = false;
 			int count=0;
-			for(char character: charArray) {
+			for(char character: readFile().readLine().toCharArray()) {
 				if(character ==' ') {
 					count++;
 				}
 			}
-			System.out.println(count +Constant.word + charArray.length);
+			System.out.println(count+1 +Constant.word );
 			} catch (Exception e){}
 			System.out.println(Constant.loaded);
 		}
