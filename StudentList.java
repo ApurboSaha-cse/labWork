@@ -5,14 +5,16 @@ import java.text.*;
 import java.util.*;
 public class StudentList {
 	public static void main(String[] args) {
+		//Check number of arguments.
 		if(args.length  != 1){
 			System.err.println(Constant.invalid);
+			System.err.println(Constant.MSG_USAGE);
 			System.err.println(Constant.exit);
 			System.exit(1);
 		}
 
 //		Check arguments
-		if(args[0].equals(Constant.print)) {
+		if(args[0].equals(Constant.print)) { //List data arguments.
 			System.out.println(Constant.load);
 			try {
 			//BufferedReader bufferedReader = readFile();
@@ -24,7 +26,7 @@ public class StudentList {
 			} catch (Exception e){}
 			System.out.println(Constant.loaded);
 		}
-		else if(args[0].equals(Constant.random)) {
+		else if(args[0].equals(Constant.random)) { //Show random data arguments.
 			System.out.println(Constant.load);
 			try {
 			//BufferedReader bufferedReader = readFile();
@@ -36,7 +38,7 @@ public class StudentList {
 			} catch (Exception e){}
 			System.out.println(Constant.loaded);
 		}
-		else if(args[0].contains(Constant.add)){
+		else if(args[0].contains(Constant.add)){ //Add data arguments.
 			System.out.println(Constant.load);
 			try {
 			BufferedWriter bufferedWriter = writeFile();
@@ -50,7 +52,7 @@ public class StudentList {
 			} catch (Exception e){}
 			System.out.println(Constant.loaded);
 		}
-		else if(args[0].contains(Constant.search)) {
+		else if(args[0].contains(Constant.search)) { //Search data arguments.
 			System.out.println(Constant.load);
 			try {
 			//BufferedReader bufferedReader = readFile();
@@ -67,25 +69,38 @@ public class StudentList {
 			} catch (Exception e){}
 			System.out.println(Constant.loaded);
 		}
-		else if(args[0].contains(Constant.count)) {
+		else if(args[0].contains(Constant.count)) { //Count data arguments.
 			System.out.println(Constant.load);
 			try {
 			System.out.println(readFile().readLine().split(Constant.comma).length + Constant.word);
 			} catch (Exception e){}
 			System.out.println(Constant.loaded);
 		}
-		else{
+		else{ //Invalid arguments.
 			System.err.println(Constant.invalid);
+			System.err.println(Constant.MSG_USAGE);
 			System.err.println(Constant.exit);
 			System.exit(2);
 		}
 
 	}
 
+	/**
+	* Get first line from Students.txt file.
+	* @return first line as string.
+	* @throws Exception.
+	*/
+
 	private static BufferedReader readFile() throws FileNotFoundException{
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(Constant.studentsList)));
 		return bufferedReader;
 	}
+
+	/**
+	* Get student file buffer writer object.
+	* @return BufferWriter of student file.
+	*@throws Exception
+	 */
 	private static BufferedWriter writeFile() throws IOException {
 		BufferedWriter bufferedReader = new BufferedWriter(new FileWriter(Constant.studentsList, true));
 		return bufferedReader;

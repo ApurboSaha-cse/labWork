@@ -14,6 +14,13 @@ public class Constant {
     public  static  String count = "c";
     public  static  String search = "?";
     public  static  String add = "+";
+    public static String MSG_USAGE = "Usage:\n" +
+    "\tjava StudentList a\n" +
+    "\tjava StudentList c\n" +
+    "\tjava StudentList ?Student1\n" +
+    "\tjava StudentList r\n" +
+    "\tjava StudentList +Name\n" +
+    "\tetc...";
 
 
 
