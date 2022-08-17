@@ -41,13 +41,11 @@ public class StudentList {
 		else if(args[0].contains(Constant.add)){ //Add data arguments.
 			System.out.println(Constant.load);
 			try {
+			String previousContent =  getLineFromFile();
 			BufferedWriter bufferedWriter = writeFile();
-			String inputData = args[0].substring(1);
-	        //Date date = new Date();
-	        //String format = Constant.dd;
-	        //DateFormat dateFormat = new SimpleDateFormat(Constant.dd);
-	        String formatDate = new SimpleDateFormat(Constant.dd).format(new Date());
-			bufferedWriter.write(Constant.comma +inputData+ Constant.lastUpdate +formatDate);
+			bufferedWriter.write(previousContent);
+			bufferedWriter.write(Constant.comma + " " + args[0].substring(1));
+			bufferedWriter.write(Constant.lastUpdate + new SimpleDateFormat(Constant.dd).format(new Date()));
 			bufferedWriter.close();
 			} catch (Exception e){}
 			System.out.println(Constant.loaded);
@@ -91,18 +89,22 @@ public class StudentList {
 	* @throws Exception.
 	*/
 
-	private static BufferedReader readFile() throws FileNotFoundException{
+	private static BufferedReader readFile() throws Exception{
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(Constant.studentsList)));
 		return bufferedReader;
+	}
+	public static  String  getLineFromFile() throws Exception{
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(Constant.studentsList)));
+		return bufferedReader.readLine();
 	}
 
 	/**
 	* Get student file buffer writer object.
 	* @return BufferWriter of student file.
-	*@throws Exception
+	* @throws Exception
 	 */
-	private static BufferedWriter writeFile() throws IOException {
-		BufferedWriter bufferedReader = new BufferedWriter(new FileWriter(Constant.studentsList, true));
+	private static BufferedWriter writeFile() throws Exception {
+		BufferedWriter bufferedReader = new BufferedWriter(new FileWriter(Constant.studentsList, false));
 		return bufferedReader;
 	}
 
